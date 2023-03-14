@@ -1,6 +1,6 @@
-const collegeModel = require('../models/college');
-const internModel = require('../models/intern');
-const { validName, validFullName, validLink } = require('../validators/validator');
+const collegeModel = require('../models/collegeModel');
+const internModel = require('../models/internModel');
+const { validName, validFullName, isUrl } = require('../validators/validator');
 
 const createCollege = async function (req, res) {
     try {
@@ -12,7 +12,7 @@ const createCollege = async function (req, res) {
         if (!logoLink) return res.status(400).send({ status: false, message: 'please enter logoLink to register a college' });
         if (!validName(name)) return res.status(400).send({ status: false, message: 'please enter a valid inter name to register a college' });
         if (!validFullName(fullName)) return res.status(400).send({ status: false, message: 'please enter a valid fullName to register a college' });
-        if (!validLink(logoLink)) return res.status(400).send({ status: false, message: 'please enter a valid logoLink to register a college' });
+        if (!isUrl(logoLink)) return res.status(400).send({ status: false, message: 'please enter a valid logoLink to register a college' });
 
         // checking unique details -- 
         const college = await collegeModel.findOne({ name: name });

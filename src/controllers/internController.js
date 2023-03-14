@@ -1,5 +1,5 @@
-const internModel = require('../models/intern');
-const collegeModel = require('../models/college');
+const internModel = require('../models/internModel');
+const collegeModel = require('../models/collegeModel');
 const { validName, validEmail, validCollege, validNumber } = require('../validators/validator');
 
 const createIntern = async function (req, res) {
