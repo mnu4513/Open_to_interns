@@ -72,7 +72,7 @@ Refer below sample
 }
 ```
 ### Error Response structure
-```yaml
+```
 {
   status: false,
   message: ""
